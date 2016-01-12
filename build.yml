@@ -7,5 +7,6 @@
        copy: src=build01.tc dest=/home/timykchang mode=0777
 
      - name: Execute the script
-       command: bash /home/timykchang/build01.tc
+#       command: bash /home/timykchang/build01.tc
+       command: bsub -n 10 -m cmtest-01 /home/timykchang/lsf_cmd.tc
 
