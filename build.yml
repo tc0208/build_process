@@ -2,7 +2,6 @@
 - name: Transfer and execute a script.
   hosts: all
   remote_user: timykchang
-  sudo: yes
   tasks:
      - name: Transfer the script
        copy: src=build01.tc dest=/home/timykchang mode=0777
