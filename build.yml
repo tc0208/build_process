@@ -1,6 +1,6 @@
 ---
 - name: Transfer and execute a script.
-  hosts: server
+  hosts: all
   remote_user: timykchang
   sudo: yes
   tasks:
