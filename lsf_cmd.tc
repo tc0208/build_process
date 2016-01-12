@@ -2,5 +2,36 @@
 
 source /tools/lsf/conf/profile.lsf
 
-bsub -n 10 -m cmtest-01 /home/timykchang/build01.tc
-#bsub -n 10 -m cmtest-01 /bin/ls
+#bsub -n 10 -m cmtest-01 /home/timykchang/build01.tc
+
+lsf_id=`bsub -n 10 -m cmtest-01 /home/timykchang/build01.tc|awk '{print $2}'|sed s/\<//g|sed s/\>//g`
+
+echo "queue ID = $lsf_id"
+
+lsf_stat=`bjobs|egrep -i ^$lsf_id|awk '{print $3}'`
+
+echo "01 $lsf_id status $lsf_stat"
+
+while [ "$lsf_stat" = "PEND" ]
+do
+
+lsf_stat=`bjobs|egrep -i ^$lsf_id|awk '{print $3}'`
+
+echo "02 $lsf_id status $lsf_stat"
+
+sleep 1
+
+done
+
+while [ $lsf_stat == "RUN" ] 
+do
+
+lsf_stat=`bjobs|egrep -i ^$lsf_id|awk '{print $3}'`
+
+echo "03 $lsf_id status $lsf_stat"
+
+sleep 1
+
+done
+
+echo "$lsf_id finished !!!"
