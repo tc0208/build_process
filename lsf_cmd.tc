@@ -2,5 +2,5 @@
 
 source /tools/lsf/conf/profile.lsf
 
-#bsub -n 10 -m cmtest-01 /home/timykchang/build01.tc
-bsub -n 10 -m cmtest-01 /bin/ls
+bsub -n 10 -m cmtest-01 /home/timykchang/build01.tc
+#bsub -n 10 -m cmtest-01 /bin/ls
