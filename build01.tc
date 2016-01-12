@@ -1,0 +1,8 @@
+#!/bin/bash
+
+/bin/date | tee build.result
+
+#/usr/bin/schroot -c PHX_4265 -u timykchang "./test01.tc"
+cd && cd workspace/build_scripts/ && ./build_system.sh PHX 9 004
+
+/bin/date | tee -a build.result
